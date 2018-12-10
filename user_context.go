@@ -25,14 +25,24 @@ import (
 )
 
 // extractIdentity parse the jwt token and extracts the various elements is order to construct
-func extractIdentity(token jose.JWT) (*userContext, error) {
+func extractIdentity(token jose.JWT, config *Config) (*userContext, error) {
 	claims, err := token.Claims()
 	if err != nil {
 		return nil, err
 	}
+
+	if config.CdsAzure {
+		claims["email"], _, _ = claims.StringClaim("upn")
+		claims["preferred_username"], _, _ = claims.StringClaim("name")
+	}
+
 	identity, err := oidc.IdentityFromClaims(claims)
 	if err != nil {
 		return nil, err
+	}
+
+	if config.CdsAzure {
+		identity.Name, _, _ = claims.StringClaim("name")
 	}
 
 	// @step: ensure we have and can extract the preferred name of the user, if not, we set to the ID

@@ -345,6 +345,9 @@ type Config struct {
 
 	// DisableAllLogging indicates no logging at all
 	DisableAllLogging bool `json:"disable-all-logging" yaml:"disable-all-logging" usage:"disables all logging to stdout and stderr"`
+
+	// CDS: Custom handling of Azure
+	CdsAzure bool `json:"cds-azure" yaml:"cds-azure" usage:"enable some customizations for CDS Azure"`
 }
 
 // getVersion returns the proxy version

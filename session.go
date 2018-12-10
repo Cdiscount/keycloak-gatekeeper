@@ -42,7 +42,7 @@ func (r *oauthProxy) getIdentity(req *http.Request) (*userContext, error) {
 	if err != nil {
 		return nil, err
 	}
-	user, err := extractIdentity(token)
+	user, err := extractIdentity(token, r.config)
 	if err != nil {
 		return nil, err
 	}

@@ -80,7 +80,7 @@ func TestGetUserContext(t *testing.T) {
 	token := newTestToken("test")
 	token.addRealmRoles(realmRoles)
 	token.addClientRoles("client", []string{"client"})
-	context, err := extractIdentity(token.getToken())
+	context, err := extractIdentity(token.getToken(), &Config{})
 	assert.NoError(t, err)
 	assert.NotNil(t, context)
 	assert.Equal(t, "1e11e539-8256-4b3b-bda8-cc0d56cddb48", context.id)
@@ -93,7 +93,7 @@ func TestGetUserRealmRoleContext(t *testing.T) {
 	roles := []string{"dsp-dev-vpn", "vpn-user", "dsp-prod-vpn", "openvpn:dev-vpn"}
 	token := newTestToken("test")
 	token.addRealmRoles(roles)
-	context, err := extractIdentity(token.getToken())
+	context, err := extractIdentity(token.getToken(), &Config{})
 	assert.NoError(t, err)
 	assert.NotNil(t, context)
 	assert.Equal(t, "1e11e539-8256-4b3b-bda8-cc0d56cddb48", context.id)
@@ -104,7 +104,7 @@ func TestGetUserRealmRoleContext(t *testing.T) {
 
 func TestUserContextString(t *testing.T) {
 	token := newTestToken("test")
-	context, err := extractIdentity(token.getToken())
+	context, err := extractIdentity(token.getToken(), &Config{})
 	assert.NoError(t, err)
 	assert.NotNil(t, context)
 	assert.NotEmpty(t, context.String())
