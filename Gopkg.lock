@@ -38,8 +38,8 @@
   revision = "144418e1475d8bf7abbdc48583500f1a20c62ea7"
 
 [[projects]]
-  branch = "v1"
-  digest = "1:6a503e232df389d94ebb97dfb22d4ae463b6e2f351660613e11d9e42f57ab6df"
+  branch = "feature/expires_negative"
+  digest = "1:7d5c641d48bb6bd1a3289bd3d2366cdf894616f1a362c0bc4578b5d9cea442a3"
   name = "github.com/coreos/go-oidc"
   packages = [
     "http",
@@ -49,7 +49,8 @@
     "oidc",
   ]
   pruneopts = "UT"
-  revision = "e860bd55bfa7d7cb35d30d26a167982584f616b0"
+  revision = "b177dfeda320fb8f7582fdb6ddcf4e67f8bdaf5b"
+  source = "github.com/Cdiscount/go-oidc"
 
 [[projects]]
   digest = "1:6fda0d7f5e52b081e075775b1ecebf1ea0c923e7be33604ed0225ae078e701b5"
